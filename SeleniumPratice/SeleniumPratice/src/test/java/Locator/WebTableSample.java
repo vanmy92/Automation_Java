@@ -23,8 +23,10 @@ public class WebTableSample {
         List<WebElement> headers=driver.findElements(By.xpath("//table[@id='table01']/thead//th"));
         for (WebElement el: headers){
             System.out.println(el.getText());
+
         }
 */
+/*
 
         List<WebElement> rows=driver.findElements(By.xpath("//table[@id='table01']/tbody/tr"));
         for (WebElement row:rows){
@@ -32,6 +34,36 @@ public class WebTableSample {
             for (WebElement cellData: cols){
                 System.out.println(cellData.getText());
 
+            }
+        }
+
+*/
+
+        List<WebElement> rows=driver.findElements(By.xpath("//table[@id='table01']/tbody/tr"));
+        /*System.out.println(rows.size());
+        for (WebElement row:rows){
+            List<WebElement> cols =row.findElements(By.tagName("td"));
+            for (WebElement cellData: cols){
+                //System.out.println(cellData.getText());
+                if(cellData.getText().equals("Coded UI")){
+                    cols.get(0).findElement(By.tagName("input")).click();
+                    Thread.sleep(3000);
+                    System.out.println(cols.get(4).findElement(By.tagName("input")).getAttribute("value"));
+                    cols.get(4).findElement(By.tagName("input")).click();
+                    Thread.sleep(3000);
+                    System.out.println(cols.get(4).findElement(By.tagName("input")).getAttribute("value"));
+
+                    System.out.println("test case passed! ");
+
+                }
+
+            }
+        }*/
+        for (int i=0; i< rows.size();i++){
+            List<WebElement> cols=rows.get(i).findElements(By.tagName("td"));
+            for(int j=1; j<=cols.size();j++){
+                String cell= driver.findElement(By.xpath("//table[@id='table01']/tbody/tr["+(i+1)+"]/td["+j+"]")).getText();
+                System.out.println(cell);
             }
         }
 
